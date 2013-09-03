@@ -1,0 +1,16 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="wunderdata_mailchimp.apikey" />
+        <parameter key="wunderdata_mailchimp.opts" />
+    </parameters>
+
+    <services>
+        <service id="wunderdata_mailchimp.client" class="Mailchimp">
+            <argument>%wunderdata_mailchimp.apikey%</argument>
+            <argument>%wunderdata_mailchimp.opts%</argument>
+        </service>
+    </services>
+</container>
