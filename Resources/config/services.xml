@@ -5,12 +5,18 @@
     <parameters>
         <parameter key="wunderdata_mailchimp.apikey" />
         <parameter key="wunderdata_mailchimp.opts" />
+        <parameter key="wunderdata_mailchimp.client.class">Mailchimp</parameter>
+        <parameter key="wunderdata_mailchimp.export_client.class">Wunderdata\MailchimpBundle\Client\ExportClient</parameter>
     </parameters>
 
     <services>
-        <service id="wunderdata_mailchimp.client" class="Mailchimp">
+        <service id="wunderdata_mailchimp.client" class="%wunderdata_mailchimp.client.class%">
             <argument>%wunderdata_mailchimp.apikey%</argument>
             <argument>%wunderdata_mailchimp.opts%</argument>
+        </service>
+        <service id="wunderdata_mailchimp.export_client" class="%wunderdata_mailchimp.export_client.class%">
+            <argument>%wunderdata_mailchimp.apikey%</argument>
+            <argument type="service" id="buzz" />
         </service>
     </services>
 </container>
