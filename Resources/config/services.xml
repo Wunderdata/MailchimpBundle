@@ -3,6 +3,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="wunderdata_mailchimp.buzz.client.class">Buzz\Client\Curl</parameter>
+        <parameter key="wunderdata_mailchimp.buzz.message_factory.class">Buzz\Message\Factory\Factory</parameter>
+        <parameter key="wunderdata_mailchimp.buzz.browser.class">Buzz\Browser</parameter>
         <parameter key="wunderdata_mailchimp.apikey" />
         <parameter key="wunderdata_mailchimp.opts" />
         <parameter key="wunderdata_mailchimp.client.class">Mailchimp</parameter>
@@ -10,10 +13,23 @@
     </parameters>
 
     <services>
+        <service id="wunderdata_mailchimp.buzz.message_factory" class="%wunderdata_mailchimp.buzz.message_factory.class%" public="false" />
+        <service id="wunderdata_mailchimp.buzz.client" class="%wunderdata_mailchimp.buzz.client.class%" public="false">
+            <call method="setTimeout">
+                <argument>%wunderdata_mailchimp.buzz.client.timeout%</argument>
+            </call>
+        </service>
+
+        <service id="buzz" class="%wunderdata_mailchimp.buzz.browser.class%">
+            <argument type="service" id="wunderdata_mailchimp.buzz.client" />
+            <argument type="service" id="wunderdata_mailchimp.buzz.message_factory" />
+        </service>
+
         <service id="wunderdata_mailchimp.client" class="%wunderdata_mailchimp.client.class%">
             <argument>%wunderdata_mailchimp.apikey%</argument>
             <argument>%wunderdata_mailchimp.opts%</argument>
         </service>
+
         <service id="wunderdata_mailchimp.export_client" class="%wunderdata_mailchimp.export_client.class%">
             <argument>%wunderdata_mailchimp.apikey%</argument>
             <argument type="service" id="buzz" />

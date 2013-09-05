@@ -30,8 +30,10 @@ class WunderdataMailchimpExtension extends Extension
         $container->setParameter('wunderdata_mailchimp.apikey', $config['apikey']);
         if (!empty($config['opts'])) {
             $container->setParameter('wunderdata_mailchimp.opts', $config['opts']);
+            $container->setParameter('wunderdata_mailchimp.buzz.client.timeout', $config['opts']['timeout']);
         } else {
             $container->setParameter('wunderdata_mailchimp.opts', array());
+            $container->setParameter('wunderdata_mailchimp.buzz.client.timeout', 600);
         }
     }
 }
