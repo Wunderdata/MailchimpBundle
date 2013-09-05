@@ -122,7 +122,7 @@ class ExportClient
      */
     public function fetchCampaignSubscriberActivity($id, $includeEmpty = false, $since = null)
     {
-        $url = $this->url . 'ecommOrders/';
+        $url = $this->url . 'campaignSubscriberActivity/';
 
         $params = array(
             'apikey' => $this->apiKey,
