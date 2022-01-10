@@ -1,5 +1,5 @@
 {
-  "name": "wunderdata/mailchimp-bundle",
+  "name": "djamadeus/mailchimp-bundle2",
   "type": "symfony-bundle",
   "description": "Symfony2 Bundle for Mailchimp v2.0 API and Export v1.0 API",
   "keywords": ["mailchimp","api","email"],
@@ -7,8 +7,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Mike Roetgers",
-      "email": "mike@wunderdata.com"
+      "name": "Stefan Ladenthin",
+      "email": "stefan@wunderdata.com"
     }
   ],
   "require": {
